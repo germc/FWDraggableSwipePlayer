@@ -374,7 +374,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     
     episodeBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;
     episodeBtn.frame = CGRectMake(0, 0, 30 , 30 );
-    [episodeBtn addTarget:self action:@selector(selectBtnOnClick:)forControlEvents:UIControlEventTouchUpInside];
+    [episodeBtn addTarget:self action:@selector(episodeBtnOnClick:)forControlEvents:UIControlEventTouchUpInside];
     [episodeBtn setTitle:@"專輯" forState:UIControlStateNormal];
     episodeBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     [rightView addSubview:episodeBtn];
@@ -559,7 +559,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
             [self.delegate lockScreenBtnOnClick:sender];
 }
 
--(void)selectBtnOnClick:(id)sender
+-(void)episodeBtnOnClick:(id)sender
 {
     if(episodeView.frame.origin.x == (screenHeight > screenWidth ? screenHeight : screenWidth) )
         [self showSelectView];
@@ -569,8 +569,8 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     [[NSNotificationCenter defaultCenter] postNotificationName:FWSwipePlayerSelectBtnOnclick object:self userInfo:nil] ;
     
     if(self.delegate)
-        if([self.delegate respondsToSelector:@selector(selectBtnOnClick:)])
-            [self.delegate selectBtnOnClick:sender];
+        if([self.delegate respondsToSelector:@selector(episodeBtnOnClick:)])
+            [self.delegate episodeBtnOnClick:sender];
 }
 
 

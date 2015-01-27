@@ -517,9 +517,9 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
     [[NSNotificationCenter defaultCenter] postNotificationName:FWSwipePlayerViewStateChange object:self userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:isSmall],@"isSmall",[NSNumber numberWithBool:isLock],@"isLock",nil] ];
 }
 
-- (void)selectBtnOnClick:(id)sender
+- (void)episodeBtnOnClick:(id)sender
 {
-    NSLog(@"selectBtnOnClick");
+    NSLog(@"episodeBtnOnClick");
 }
 
 -(void)subtitleBtnOnClick:(id)sender
