@@ -13,6 +13,7 @@
 #import "FWSWipePlayerConfig.h"
 #import "FWSelectView.h"
 #import "FWVideoTypeSelectView.h"
+#import "VideoInfo.h"
 
 extern NSString *FWSwipePlayerLockBtnOnclick;
 extern NSString *FWSwipePlayerShareBtnOnclick;
@@ -21,7 +22,7 @@ extern NSString *FWSwipePlayerPlayBtnOnclick;
 extern NSString *FWSwipePlayerFullScreenBtnOnclick;
 extern NSString *FWSwipePlayerNextEpisodeBtnOnclick;
 extern NSString *FWSwipePlayerVideoTypeBtnOnclick;
-extern NSString *FWSwipePlayerSelectBtnOnclick;
+extern NSString *FWSwipePlayerEpisodeBtnOnclick;
 extern NSString *FWSwipePlayerOnTap;
 extern NSString *FWSwipePlayerSubtitleBtnOnclick;
 extern NSString *FWSwipePlayerChannelBtnOnclick;

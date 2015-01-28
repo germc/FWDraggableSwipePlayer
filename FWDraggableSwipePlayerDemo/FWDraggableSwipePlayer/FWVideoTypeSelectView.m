@@ -36,7 +36,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     cell.backgroundColor = self.listView.backgroundColor;
     cell.textLabel.text = self.datalist[[indexPath row]][@"title"];
-    cell.textLabel.font = [UIFont systemFontOfSize:10];
+    cell.textLabel.font = [UIFont systemFontOfSize:9];
     cell.textLabel.textColor = [UIColor whiteColor];
     
     return cell;
