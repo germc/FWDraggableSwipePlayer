@@ -75,12 +75,13 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     FWSWipePlayerConfig * config;
     FWPlayerColorUtil *colorUtil;
     
-    
     CGFloat screenHeight;
     CGFloat screenWidth;
     
     NSURL *currentVideoUrl;
     NSArray *videoList;
+    
+    UIPanGestureRecognizer *swipeRecognizer;
 }
 @end
 
@@ -148,7 +149,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
         return self;
     }
     else
-        return [self initWithContentURL:[NSURL URLWithString: @"http://token.tvb.com/stream/vod/news/http/content1/export/20141230/archive_81_196645_cht_1024_576_500k_archive.mp4"] andConfig:[[FWSWipePlayerConfig alloc]init]];
+        return [self initWithContentURL:[NSURL URLWithString: @"http://techslides.com/demos/sample-videos/small.mp4"] andConfig:[[FWSWipePlayerConfig alloc]init]];
 }
 
 - (void)configControls {
@@ -194,6 +195,12 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     control.backgroundColor = [UIColor clearColor];
     [control addTarget:self action:@selector(handleTap:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:control];
+    
+    swipeRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)] ;
+    [swipeRecognizer setMinimumNumberOfTouches:1];
+    [swipeRecognizer setMaximumNumberOfTouches:1];
+    [swipeRecognizer setDelegate:self];
+    
 }
 
 -(void)configCenterControls
@@ -417,16 +424,15 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
         [selectView addSubview:episodeView];
     }
     
-    
     subtitleView = [[FWSelectView alloc]initWithFrame:CGRectMake(0,0,selectView.frame.size.width,selectView.frame.size.height) ];
     subtitleView.backgroundColor = [UIColor blackColor];
-    [subtitleView reloadSelectViewWithArray:videoList withSectionTitle:@"字幕"];
+    [subtitleView reloadSelectViewWithArray:videoList[0][@"subtitles"] withSectionTitle:@"字幕"];
     [subtitleView setHidden:YES];
     [selectView addSubview:subtitleView];
     
     channelView = [[FWSelectView alloc]initWithFrame:CGRectMake(0,0,selectView.frame.size.width,selectView.frame.size.height) ];
     channelView.backgroundColor = [UIColor blackColor];
-    [channelView reloadSelectViewWithArray:videoList withSectionTitle:@"聲道"];
+    [channelView reloadSelectViewWithArray:videoList[0][@"audio"]  withSectionTitle:@"聲道"];
     [channelView setHidden:YES];
     [selectView addSubview:channelView];
 }
@@ -1147,6 +1153,15 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:FWSwipePlayerViewStateChange
                                                   object:nil];
+}
+
+#pragma mark UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    return YES;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
 }
 
 @end

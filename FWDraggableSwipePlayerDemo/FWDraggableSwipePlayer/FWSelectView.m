@@ -118,7 +118,12 @@ NSString *FWSelectViewOnClick  = @"FWSelectViewOnClick";
     }
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     cell.backgroundColor = self.listView.backgroundColor;
-    cell.textLabel.text = self.datalist[[indexPath row]][@"title"];
+    if(self.datalist[[indexPath row]][@"title"])
+        cell.textLabel.text = self.datalist[[indexPath row]][@"title"];
+    else if(self.datalist[[indexPath row]][@"lang"])
+        cell.textLabel.text = self.datalist[[indexPath row]][@"lang"];
+    else
+        cell.textLabel.text = @"";
     cell.textLabel.font = [UIFont systemFontOfSize:12];
     cell.textLabel.textColor = [UIColor whiteColor];
     if([indexPath row] == 0)

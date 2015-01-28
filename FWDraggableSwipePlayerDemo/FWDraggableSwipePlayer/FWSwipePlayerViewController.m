@@ -42,7 +42,7 @@
     [self configPlayer];
 }
 
-- (void)updateMoviePlayerWithList:(NSArray * )list Config:(FWSWipePlayerConfig*)configuration
+- (void)updateMoviePlayerWithVideoList:(NSArray * )list Config:(FWSWipePlayerConfig*)configuration
 {
     dataList = list;
     infoDict = list[0];
@@ -56,12 +56,18 @@
         self.moviePlayer = nil;
     config.currentVideoTitle = [infoDict objectForKey:@"title"];
     if(dataList)
-        self.moviePlayer = [[FWSwiperPlayerController alloc]initWithContentDataList:dataList andConfig:config];
+    {
+            //[self playWithSubtitles:subtitles currentSubtitle:currentSubtitle channels:channels currentChannel:currentChannel startAt:time];
+            
+            self.moviePlayer = [[FWSwiperPlayerController alloc]initWithContentDataList:dataList andConfig:config];
+        
+    }
     else
         self.moviePlayer = [[FWSwiperPlayerController alloc]initWithContentURL:[NSURL URLWithString: [infoDict objectForKey:@"url"]] andConfig:config];
     [self.moviePlayer updatePlayerFrame:CGRectMake(0, 0, self.view.frame.size.width, config.topPlayerHeight)];
     [self.view addSubview: self.moviePlayer.view];
 }
+
 
 -(NSUInteger)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskAll;

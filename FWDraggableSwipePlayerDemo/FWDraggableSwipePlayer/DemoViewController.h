@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FWDraggablePlayerManager.h"
+#import "FWSwipePlayerViewController.h"
 
 extern NSString *FWSwipePlayerViewStateChange;
 

@@ -14,6 +14,6 @@
 @property (nonatomic, strong)FWSwiperPlayerController *moviePlayer;
 
 - (void)updateMoviePlayerWithInfo:(NSDictionary * )dict Config:(FWSWipePlayerConfig*)config;
-- (void)updateMoviePlayerWithList:(NSArray * )list Config:(FWSWipePlayerConfig*)configuration;
+- (void)updateMoviePlayerWithVideoList:(NSArray * )list Config:(FWSWipePlayerConfig*)configuration;
 
 @end

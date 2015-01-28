@@ -124,7 +124,7 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
     self.playerController =  [[FWSwipePlayerViewController alloc]init];
     
     if(dataList)
-        [self.playerController updateMoviePlayerWithList:dataList Config:config];
+        [self.playerController updateMoviePlayerWithVideoList:dataList Config:config];
     else
         [self.playerController updateMoviePlayerWithInfo:infoDict Config:config];
     

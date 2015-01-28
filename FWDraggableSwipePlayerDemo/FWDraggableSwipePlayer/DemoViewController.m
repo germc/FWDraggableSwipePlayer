@@ -16,6 +16,7 @@
 {
     NSMutableArray *list;
     BOOL shouldRotate;
+    FWSwipePlayerViewController *playerController;
 }
 
 @end
@@ -69,6 +70,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     if(self.playerManager == nil)
     {
         FWSWipePlayerConfig *config = [[FWSWipePlayerConfig alloc]init];
@@ -86,6 +88,22 @@
                                                  name:FWSwipePlayerViewStateChange object:nil];
     
     [self.playerManager showAtViewAndPlay:self.view];
+     /*
+    if(playerController != nil)
+    {
+        [playerController.moviePlayer stopAndRemove];
+        playerController = nil;
+    }
+    
+    playerController =  [[FWSwipePlayerViewController alloc]init];
+    FWSWipePlayerConfig *config = [[FWSWipePlayerConfig alloc]init];
+    
+    [playerController updateMoviePlayerWithVideoList:list Config:config];
+    
+    //playerController.moviePlayer.delegate = self;
+    [self.view addSubview:playerController.view];
+    [playerController.moviePlayer prepareToPlay];
+     */
 }
 
 #pragma mark notification

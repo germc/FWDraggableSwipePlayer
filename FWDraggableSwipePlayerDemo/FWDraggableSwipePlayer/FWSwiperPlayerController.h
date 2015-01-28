@@ -13,7 +13,6 @@
 #import "FWSWipePlayerConfig.h"
 #import "FWSelectView.h"
 #import "FWVideoTypeSelectView.h"
-#import "VideoInfo.h"
 
 extern NSString *FWSwipePlayerLockBtnOnclick;
 extern NSString *FWSwipePlayerShareBtnOnclick;
@@ -53,7 +52,7 @@ typedef enum _FWPlayerMoveState {
 
 @end
 
-@interface FWSwiperPlayerController : MPMoviePlayerController
+@interface FWSwiperPlayerController : MPMoviePlayerController<UIGestureRecognizerDelegate>
 
 @property (nonatomic, assign)FWPlayerMoveState moveState;
 @property (nonatomic, assign)id<FWPlayerDelegate> delegate;
